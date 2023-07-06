@@ -1,0 +1,18 @@
+---
+# - name: Setup kubernetes common
+#   hosts: all
+#   become: true
+#   roles: 
+#     - kube-common-setup
+
+# - name: Setup kubernetes control plane
+#   hosts: kcontrol
+#   become: true
+#   roles:
+#     - kube-control-setup
+
+- name: Setup kubernetes node
+  hosts: knodes
+  become: true
+  roles:
+    - kube-node-setup
