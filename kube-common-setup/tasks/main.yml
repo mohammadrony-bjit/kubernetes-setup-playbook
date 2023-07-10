@@ -2,7 +2,13 @@
 - name: disable SELinux on reboot
   selinux:
     state: disabled
+  notify: Reboot ALL machines
 
+- name: Install firewalld package
+  yum:
+    name: firewalld
+    state: present
+    
 - name: disable firewall service for labs
   service:
     name: firewalld
@@ -100,6 +106,3 @@
     name: kubelet
     enabled: yes
     state: started
-
-- name: reboot ALL machines
-  reboot:

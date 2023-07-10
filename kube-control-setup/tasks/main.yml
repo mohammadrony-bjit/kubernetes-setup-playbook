@@ -16,7 +16,6 @@
   copy:
     content: "{{ output.stdout }}"
     dest: /tmp/output.txt
-  become_user: root
   
 - name: Copy join command to local file
   fetch: 
