@@ -33,6 +33,13 @@
     state: directory
     mode: 0755
 
+- name: Create .kube directory locally
+  file:
+    path: /root/.kube
+    state: directory
+  become_user: root
+  delegate_to: localhost
+
 - name: Copy admin.conf to user kube config
   copy:
     src: /etc/kubernetes/admin.conf
@@ -41,6 +48,14 @@
     group: root
     mode: '0644'
     remote_src: yes
+
+- name: Fetch file and set permissions
+  fetch:
+    src: "/root/.kube/config"
+    dest: "/root/.kube/config"
+    flat: yes
+    validate_checksum: yes
+  become_user: root
 
 - name: Set KUBECONFIG environment variable
   lineinfile:
