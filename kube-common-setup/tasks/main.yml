@@ -106,5 +106,5 @@
     enabled: yes
     state: started
 
-- name: Reboot ALL machines
+- name: reboot ALL machines
   reboot:

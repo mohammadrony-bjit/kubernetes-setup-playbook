@@ -42,6 +42,14 @@
     mode: '0644'
     remote_src: yes
 
+- name: Fetch file and set permissions
+  fetch:
+    src: "/root/.kube/config"
+    dest: "/tmp/kubeconfig"
+    flat: yes
+    validate_checksum: yes
+  become_user: root
+
 - name: Set KUBECONFIG environment variable
   lineinfile:
     path: /etc/profile.d/kubeconfig.sh
