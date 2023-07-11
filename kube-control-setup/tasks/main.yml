@@ -33,6 +33,13 @@
     state: directory
     mode: 0755
 
+- name: Create .kube directory locally
+  file:
+    path: /root/.kube
+    state: directory
+  become_user: root
+  delegate_to: localhost
+
 - name: Copy admin.conf to user kube config
   copy:
     src: /etc/kubernetes/admin.conf
