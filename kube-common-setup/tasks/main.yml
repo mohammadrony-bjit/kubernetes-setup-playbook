@@ -44,7 +44,7 @@
     state: absent
 
 - name: Install dnf-utils
-  dnf:
+  yum:
     name: yum-utils
     state: present
     update_cache: true
