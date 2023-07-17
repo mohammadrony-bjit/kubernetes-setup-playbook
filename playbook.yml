@@ -3,7 +3,7 @@
   hosts: kcontrol, knodes
   become: true
   gather_facts: false
-  roles: 
+  roles:
     - kube-common-setup
 
 - name: Setup kubernetes control plane
