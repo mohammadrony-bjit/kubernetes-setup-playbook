@@ -1,4 +1,23 @@
 ---
+- name: Install httpd server
+  dnf:
+    name: httpd
+    state: present
+  
+- name: Kubernetes port mapping configuration
+  copy:
+    src: files/k8s-service.conf
+    dest: /etc/httpd/conf.d/k8s-service.conf
+    owner: root
+    group: root
+    mode: "0644"
+
+- name: Start httpd service
+  service:
+    name: httpd
+    state: started
+    enabled: yes
+
 - name: Copy join token to node
   copy:
     src: /home/ansible/kube-output.txt
